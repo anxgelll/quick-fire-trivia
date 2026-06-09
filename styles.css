@@ -1,0 +1,166 @@
+
+
+/* Styling the body of the page */
+
+
+body {
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #1e293b;
+    padding: 2rem;
+    margin: 0;
+}
+
+/* Styling the container for the content */
+
+#question-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}   
+#question-text {
+
+
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+
+}
+
+
+ #answer-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ .answer-btn {
+
+
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #d6dbf5;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.1s ease;}
+
+    .answer-btn:hover {
+        background: #eef0ff;
+        border-color: #6366f1;
+        transform: translateY(-1px);
+    }
+    .answer-btn:focus {
+        outline: 2px solid #6366f1;
+    }
+
+
+/* --- State classes (applied by JavaScript during the game) --- */
+
+/* The button the player clicked — correct answer */
+.correct {
+    background-color: #10b981;
+    color: white;
+    border-color: #059669;
+}
+
+/* The button the player clicked — wrong answer */
+.wrong {
+    background-color: #f43f5e;
+    color: white;
+    border-color: #e11d48;
+}
+
+/* All answer buttons after a choice is made */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* #question-card after an answer is locked in */
+.answered {
+    border-left: 4px solid #90a4ae;
+}
+
+/* Hides an element — used on next-btn and end-screen initially */
+.hidden {
+    display: none;
+}
+
+
+/* --- Next button --- */
+
+#next-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+#next-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+
+/* --- End screen (JS reveals it and fills it in at game over) --- */
+
+#end-screen {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#end-screen h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+#end-screen #restart-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #14b8a6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+#end-screen #restart-btn:hover {
+    background: #0d9488;
+    transform: translateY(-1px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
