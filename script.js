@@ -65,10 +65,6 @@ const answerBtnsNodeList = document.querySelectorAll(".answer-btn");
 console.log("Collection", answerBtnsCollections);
 console.log("NodeList", answerBtnsNodeList);
 
-// getElementsByClassName returns an HTMLCollection.
-// querySelectorAll returns a NodeList.
-// To use .map() on either, convert with Array.from() (or the spread operator [...]).
-
 gameTitle.textContent = "⚡ Quick Fire Trivia";
 console.log("FIrst question:", questionText.textContent);
 questionNumber.textContent = questionNumber.textContent.toUpperCase()
@@ -98,7 +94,6 @@ questionCard.classList.remove("answered")
 }
 loadQuestion(0);
 answerList.addEventListener("click", (event) => {
-  // ignore clicks that land on the gap, not a button
   if (event.target.tagName !== "BUTTON") return
 
   const clickedBtn = event.target
@@ -114,15 +109,13 @@ answerList.addEventListener("click", (event) => {
     answerBtnsNodeList[correctIndex].classList.add("correct")
   }
 
-  // lock in the answer — disable every button
+  // lock in the answer
   Array.from(answerBtnsNodeList).forEach((btn) => btn.classList.add("disabled"))
 
-  // finish the turn: mark the card answered, reveal "Next Question"
   questionCard.classList.add("answered")
   nextBtn.classList.remove("hidden")
 })
 
-// TODO (your own words — required by the workshop):
 // Why does clicking a button inside #answer-list trigger this listener?
 // Answer: Clicking a button inside #answer-list triggers this listener because of event delegation. The click event bubbles up from the button to its parent elements, and since the listener is attached to #answer-list, it can catch the event when it reaches that level in the DOM. This allows us to handle clicks on any of the answer buttons without needing to attach individual listeners to each button.
 //
@@ -143,15 +136,12 @@ nextBtn.addEventListener("click", () => {
 })
 
 function showEndScreen() {
-  // hide the question card, reveal the end screen
   questionCard.classList.add("hidden")
   endScreen.classList.remove("hidden")
 
-  // build the final-score heading from scratch in JavaScript
   const heading = document.createElement("h2")
   heading.textContent = `You scored ${score} out of ${questions.length}`
 
-  // build an encouragement message based on how the player did
   const message = document.createElement("p")
   if (score === questions.length) {
     message.textContent = "Flawless! You didn't miss a single one. 🏆"
@@ -161,7 +151,6 @@ function showEndScreen() {
     message.textContent = "Tough round! Give it another go — you've got this. 💪"
   }
 
-  // build the "Play Again" button
   const restartBtn = document.createElement("button")
   restartBtn.id = "restart-btn"
   restartBtn.textContent = "Play Again"
@@ -176,7 +165,6 @@ function showEndScreen() {
 // ---------- Phase 6: Restart ----------
 
 endScreen.addEventListener("click", (event) => {
-  // the restart button was created by JS, so we delegate to #end-screen
   if (event.target.id !== "restart-btn") return
 
   // reset game state
@@ -184,10 +172,8 @@ endScreen.addEventListener("click", (event) => {
   currentIndex = 0
   scoreDisplay.textContent = score
 
-  // clear everything showEndScreen built
   endScreen.innerHTML = ""
 
-  // bring the question card back and hide the end screen
   endScreen.classList.add("hidden")
   questionCard.classList.remove("hidden")
 
